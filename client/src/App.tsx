@@ -1,0 +1,69 @@
+import { useState, useEffect, useCallback } from 'react';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { TelemetryMonitor, type HealthData } from './components/TelemetryMonitor';
+import { Features } from './components/Features';
+import { TechStack } from './components/TechStack';
+import { ContactSection } from './components/ContactSection';
+import { Footer } from './components/Footer';
+
+export function App() {
+  const [healthData, setHealthData] = useState<HealthData | null>(null);
+  const [latency, setLatency] = useState<number | null>(null);
+  const [apiStatus, setApiStatus] = useState<'online' | 'offline' | 'checking'>('checking');
+
+  // Backend API URL (configurable via Vite env, defaults to local NestJS port 3000)
+  const apiUrl = (import.meta.env.VITE_API_URL as string) || 'http://localhost:3000/api';
+
+  const checkHealth = useCallback(async () => {
+    const start = performance.now();
+    try {
+      const response = await fetch(`${apiUrl}/health`, {
+        cache: 'no-store',
+      });
+      const end = performance.now();
+
+      if (response.ok) {
+        const data: HealthData = await response.json();
+        setHealthData(data);
+        setLatency(Math.round(end - start));
+        setApiStatus('online');
+      } else {
+        setApiStatus('offline');
+        setLatency(null);
+      }
+    } catch {
+      setApiStatus('offline');
+      setLatency(null);
+    }
+  }, [apiUrl]);
+
+  useEffect(() => {
+    checkHealth();
+    // Refresh telemetry every 30 seconds
+    const interval = setInterval(checkHealth, 30000);
+    return () => clearInterval(interval);
+  }, [checkHealth]);
+
+  return (
+    <div className="app-container">
+      <Navbar apiStatus={apiStatus} apiLatency={latency} />
+      <main>
+        <Hero />
+        <TelemetryMonitor
+          healthData={healthData}
+          latency={latency}
+          apiStatus={apiStatus}
+          onRefresh={checkHealth}
+          apiUrl={apiUrl}
+        />
+        <Features />
+        <TechStack />
+        <ContactSection apiUrl={apiUrl} />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
