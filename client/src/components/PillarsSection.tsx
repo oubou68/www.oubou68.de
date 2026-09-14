@@ -10,6 +10,8 @@ export const PillarsSection: React.FC = () => {
       badge: 'Energy IT & Transition',
       title: 'Utilities & NextGen Energy Markets',
       subtitle: 'Dynamic Pricing, Smart Metering (iMSys) & Scalable Billing Engines',
+      image: '/images/smart-energy-grid.jpg',
+      imageAlt: 'Smart Energy Grid and Dynamic Electricity Tariff Architecture',
       description:
         'The German and European energy market is transitioning to hyper-granular 15-minute settlement. Dr. Carl Heckmann specializes in engineering cloud-native billing architectures compliant with § 41a EnWG, direct spot-market price coupling (EPEX Spot), and smart meter gateway communication.',
       icon: '⚡',
@@ -44,6 +46,8 @@ export const PillarsSection: React.FC = () => {
       badge: 'Operational Excellence',
       title: 'Business Process Optimization',
       subtitle: 'IT Ambidexterity, BPO Modernization & Lean Scaling',
+      image: '/images/process-optimization.jpg',
+      imageAlt: 'IT Ambidexterity: Balancing Optimization and Innovation',
       description:
         'Rooted in doctoral research at the Karlsruhe Institute of Technology (KIT) and University of Mannheim, Dr. Heckmann pioneers IT Ambidexterity—the strategic discipline of simultaneously maximizing legacy operational efficiency (exploitation) while executing high-velocity digital innovation (exploration).',
       icon: '⚙️',
@@ -78,6 +82,8 @@ export const PillarsSection: React.FC = () => {
       badge: 'Agentic AI Architecture',
       title: 'Autonomous AI Agents',
       subtitle: 'Multi-Agent Orchestration & Enterprise Reasoning Swarms',
+      image: '/images/autonomous-ai-agents.jpg',
+      imageAlt: 'Autonomous Multi-Agent AI System and Workflow Ingestion',
       description:
         'Moving beyond static predictive models into deterministic agentic workflows. Designing multi-agent swarms equipped with specialized tools to autonomously investigate billing variances, reconcile energy market telemetry, and provide real-time conversational feedback to consumers.',
       icon: '🤖',
@@ -163,6 +169,19 @@ export const PillarsSection: React.FC = () => {
               id={`pillar-card-${pillar.id}`}
               style={{ '--pillar-accent': pillar.accent } as React.CSSProperties}
             >
+              {/* Visual Banner Image */}
+              <div className="pillar-banner-wrapper">
+                <img
+                  src={pillar.image}
+                  alt={pillar.imageAlt}
+                  className="pillar-banner-img"
+                  loading="lazy"
+                />
+                <div className="pillar-banner-overlay">
+                  <span className="pillar-banner-tag">{pillar.badge}</span>
+                </div>
+              </div>
+
               <div className="bento-top">
                 <div className="pillar-header-group">
                   <span className="pillar-icon">{pillar.icon}</span>
