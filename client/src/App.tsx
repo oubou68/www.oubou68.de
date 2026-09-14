@@ -6,7 +6,6 @@ import { AboutSection } from './components/AboutSection';
 import { ExperienceAffiliations } from './components/ExperienceAffiliations';
 import { PublicationsSection } from './components/PublicationsSection';
 import { PillarsSection } from './components/PillarsSection';
-import { AgentSimulator } from './components/AgentSimulator';
 import { TechStack } from './components/TechStack';
 import { TelemetryMonitor, type HealthData } from './components/TelemetryMonitor';
 import { ContactSection } from './components/ContactSection';
@@ -62,7 +61,6 @@ export function App() {
         <ExperienceAffiliations />
         <PublicationsSection />
         <PillarsSection />
-        <AgentSimulator />
         <TechStack />
         <TelemetryMonitor
           healthData={healthData}

@@ -33,10 +33,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="footer-column">
-            <h4>Interactive</h4>
-            <a href="#agent-simulator" className="footer-link">
-              Agent Simulator
-            </a>
+            <h4>Platform</h4>
             <a href="#monitor" className="footer-link">
               Live Telemetry
             </a>

@@ -35,8 +35,8 @@ export const Hero: React.FC = () => {
               <a href="#publications" className="btn btn-outline" id="btn-hero-publications">
                 📚 Publications (130+ Citations)
               </a>
-              <a href="#agent-simulator" className="btn btn-primary-glow" id="btn-hero-agent-sim">
-                ▶ Test AI Simulator
+              <a href="#pillars" className="btn btn-primary-glow" id="btn-hero-pillars">
+                ⚡ Strategic Pillars
               </a>
               <a
                 href="https://www.linkedin.com/in/carl-heckmann-21273631/"

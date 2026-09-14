@@ -38,11 +38,6 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
             </a>
           </li>
           <li>
-            <a href="#agent-simulator" className="nav-link" id="nav-link-simulator">
-              AI Simulator
-            </a>
-          </li>
-          <li>
             <a href="#contact" className="nav-link" id="nav-link-contact">
               Contact
             </a>
