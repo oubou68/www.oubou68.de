@@ -56,25 +56,9 @@ export const PillarsSection: React.FC = () => {
           <p>{t.pillars.desc}</p>
         </div>
 
-        {/* Interactive Physical Range Slider Track */}
+        {/* Sleek Interactive Range Slider Track (No selection boxes) */}
         <div className="tactile-slider-header">
-          <div className="slider-track-container">
-            <div className="slider-step-labels">
-              {pillars.map((p, idx) => (
-                <div
-                  key={p.id}
-                  className={`slider-step-mark ${currentIndex === idx ? 'active' : ''}`}
-                  onClick={() => goToSlide(idx)}
-                >
-                  <span className="step-dot"></span>
-                  <span className="step-number">0{idx + 1}</span>
-                  <span className="step-text">
-                    {p.icon} {p.title.split('&')[0].trim()}
-                  </span>
-                </div>
-              ))}
-            </div>
-
+          <div className="range-slider-rail-container">
             <div className="range-slider-rail">
               <input
                 type="range"
@@ -90,6 +74,17 @@ export const PillarsSection: React.FC = () => {
                 className="range-fill-bar"
                 style={{ width: `${(currentIndex / (total - 1)) * 100}%` }}
               />
+            </div>
+            <div className="range-slider-ticks">
+              {pillars.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={`tick-step ${currentIndex === idx ? 'active' : ''}`}
+                  onClick={() => goToSlide(idx)}
+                >
+                  0{idx + 1}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -205,7 +200,7 @@ export const PillarsSection: React.FC = () => {
           </button>
         </div>
 
-        {/* Bottom Interactive Scrubber Pills */}
+        {/* Bottom Interactive Indicator */}
         <div className="slider-bottom-scrubber">
           <div className="scrubber-indicator">
             <span className="scrubber-current">0{currentIndex + 1}</span>
@@ -213,22 +208,16 @@ export const PillarsSection: React.FC = () => {
             <span className="scrubber-total">0{total}</span>
           </div>
 
-          <div className="scrubber-pills" role="tablist">
-            {pillars.map((p, idx) => (
+          <div className="scrubber-dots" role="tablist">
+            {pillars.map((_, idx) => (
               <button
-                key={p.id}
+                key={idx}
                 type="button"
-                className={`scrubber-pill ${currentIndex === idx ? 'active' : ''}`}
+                className={`scrubber-dot ${currentIndex === idx ? 'active' : ''}`}
                 onClick={() => goToSlide(idx)}
                 aria-label={`Slide 0${idx + 1}`}
-                title={p.title}
-                id={`scrubber-pill-${idx}`}
-              >
-                <span className="pill-dot"></span>
-                <span className="pill-name">
-                  {p.icon} {p.title.split('&')[0].trim()}
-                </span>
-              </button>
+                id={`scrubber-dot-${idx}`}
+              />
             ))}
           </div>
         </div>
