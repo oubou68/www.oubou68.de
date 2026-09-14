@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
+import { ParticleMesh } from './components/ParticleMesh';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { TelemetryMonitor, type HealthData } from './components/TelemetryMonitor';
-import { Features } from './components/Features';
+import { PillarsSection } from './components/PillarsSection';
+import { AgentSimulator } from './components/AgentSimulator';
 import { TechStack } from './components/TechStack';
+import { TelemetryMonitor, type HealthData } from './components/TelemetryMonitor';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
@@ -47,9 +49,15 @@ export function App() {
 
   return (
     <div className="app-container">
+      {/* 60fps Interactive HTML5 Canvas Constellation Mesh */}
+      <ParticleMesh />
+
       <Navbar apiStatus={apiStatus} apiLatency={latency} />
       <main>
         <Hero />
+        <PillarsSection />
+        <AgentSimulator />
+        <TechStack />
         <TelemetryMonitor
           healthData={healthData}
           latency={latency}
@@ -57,8 +65,6 @@ export function App() {
           onRefresh={checkHealth}
           apiUrl={apiUrl}
         />
-        <Features />
-        <TechStack />
         <ContactSection apiUrl={apiUrl} />
       </main>
       <Footer />

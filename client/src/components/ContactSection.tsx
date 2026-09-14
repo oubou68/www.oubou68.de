@@ -7,6 +7,7 @@ interface ContactSectionProps {
 export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [topic, setTopic] = useState('Utilities & Dynamic Tariffs (§ 41a EnWG)');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<{
@@ -25,7 +26,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({
+          name,
+          email,
+          message: `[Topic: ${topic}] ${message}`,
+        }),
       });
 
       const data = await response.json();
@@ -41,14 +46,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
       } else {
         setFeedback({
           type: 'error',
-          text: data.message || 'Failed to submit inquiry. Please try again.',
+          text: data.message || 'Failed to transmit message. Please try again.',
         });
       }
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Unknown network error';
       setFeedback({
         type: 'error',
-        text: `Unable to reach the backend at ${apiUrl}: ${msg}. Ensure the NestJS server is running.`,
+        text: `Unable to reach the backend at ${apiUrl}: ${msg}.`,
       });
     } finally {
       setLoading(false);
@@ -59,46 +64,55 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
     <section className="contact-section" id="contact">
       <div className="container">
         <div className="section-header">
-          <p className="section-tag">Get In Touch</p>
-          <h2>Connect with www.oubou68.de</h2>
+          <p className="section-tag">Direct Collaboration</p>
+          <h2>Connect with Dr. Carl Heckmann</h2>
           <p>
-            Have a project, partnership, or technical question? Submit a message directly to our NestJS API backend.
+            Initiate a conversation regarding executive advisory, energy transition IT, business process ambidexterity, or autonomous multi-agent engineering.
           </p>
         </div>
 
         <div className="glass-panel contact-layout">
           <div className="contact-info">
-            <h3>Direct Communication</h3>
+            <h3>Executive Communication</h3>
             <p>
-              This form tests the end-to-end integration between the React frontend client and the NestJS validation and controller pipeline.
+              Submit an inquiry directly through this encrypted full-stack pipeline connecting to the NestJS enterprise backend.
             </p>
 
             <div className="contact-meta-card">
-              <span style={{ fontSize: '1.6rem' }}>📍</span>
+              <span style={{ fontSize: '1.6rem' }}>👔</span>
               <div>
-                <strong>Domain</strong>
-                <p>www.oubou68.de</p>
+                <strong>Professional Profile</strong>
+                <p>
+                  <a
+                    href="https://www.linkedin.com/in/carl-heckmann-21273631/"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}
+                  >
+                    linkedin.com/in/carl-heckmann-21273631/ ↗
+                  </a>
+                </p>
               </div>
             </div>
 
             <div className="contact-meta-card">
               <span style={{ fontSize: '1.6rem' }}>⚡</span>
               <div>
-                <strong>API Endpoint</strong>
-                <p>POST /api/contact</p>
+                <strong>Core Focus Areas</strong>
+                <p>Utilities • IT Ambidexterity • AI Agent Swarms</p>
               </div>
             </div>
 
             <div className="contact-meta-card">
-              <span style={{ fontSize: '1.6rem' }}>👤</span>
+              <span style={{ fontSize: '1.6rem' }}>📍</span>
               <div>
-                <strong>GitHub Maintainer</strong>
-                <p>@oubou68</p>
+                <strong>Location & Affiliation</strong>
+                <p>Heidelberg / Germany • hsag Heidelberger Services AG • BEMD</p>
               </div>
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit} id="inquiry-form">
+          <form className="contact-form" onSubmit={handleSubmit} id="contact-carl-form">
             {feedback && (
               <div
                 className={`alert-box ${
@@ -113,13 +127,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
 
             <div className="form-group">
               <label htmlFor="contact-name" className="form-label">
-                Your Name
+                Your Full Name
               </label>
               <input
                 type="text"
                 id="contact-name"
                 className="form-input"
-                placeholder="e.g. Alex Smith"
+                placeholder="e.g. Dr. Jane Miller"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -128,13 +142,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
 
             <div className="form-group">
               <label htmlFor="contact-email" className="form-label">
-                Email Address
+                Business Email
               </label>
               <input
                 type="email"
                 id="contact-email"
                 className="form-input"
-                placeholder="e.g. alex@example.com"
+                placeholder="e.g. j.miller@enterprise.de"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -142,13 +156,38 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
             </div>
 
             <div className="form-group">
+              <label htmlFor="contact-topic" className="form-label">
+                Inquiry Topic
+              </label>
+              <select
+                id="contact-topic"
+                className="form-input"
+                value={topic}
+                onChange={(e) => setTopic(e.target.value)}
+              >
+                <option value="Utilities & Dynamic Tariffs (§ 41a EnWG)">
+                  ⚡ Utilities & Dynamic Tariffs (§ 41a EnWG)
+                </option>
+                <option value="Business Process Optimization & BPO">
+                  ⚙️ Business Process Optimization & BPO
+                </option>
+                <option value="Autonomous AI Agent Architectures">
+                  🤖 Autonomous AI Agent Architectures
+                </option>
+                <option value="Executive Advisory & Speaking">
+                  🎤 Executive Advisory & Speaking
+                </option>
+              </select>
+            </div>
+
+            <div className="form-group">
               <label htmlFor="contact-message" className="form-label">
-                Message
+                Project Details or Message
               </label>
               <textarea
                 id="contact-message"
                 className="form-textarea"
-                placeholder="Write your message or inquiry here..."
+                placeholder="Describe your initiative, timeline, or consultation objectives..."
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -159,9 +198,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ apiUrl }) => {
               type="submit"
               className="btn btn-primary"
               disabled={loading}
-              id="btn-submit-contact"
+              id="btn-submit-inquiry"
             >
-              {loading ? 'Transmitting...' : 'Send Message ➔'}
+              {loading ? 'Transmitting...' : 'Send Inquiry to Dr. Heckmann ➔'}
             </button>
           </form>
         </div>

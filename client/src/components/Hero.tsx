@@ -5,33 +5,54 @@ export const Hero: React.FC = () => {
     <section className="hero" id="hero">
       <div className="container">
         <div className="hero-badge">
-          <span>✨</span> Full-Stack Digital Platform Architecture
+          <span>⚡</span> Thought Leadership & Executive Engineering
         </div>
-        
+
         <h1 id="main-heading">
-          Engineering the Next Generation on <br />
-          <span className="gradient-text">www.oubou68.de</span>
+          Shaping the Future of <br />
+          <span className="gradient-text">Energy, Processes & AI Agents</span>
         </h1>
 
-        <p className="hero-description">
-          A high-performance web platform marrying the responsiveness of <strong>React 19</strong> with the enterprise robustness of <strong>NestJS 12</strong>. Scalable, type-safe, and designed for elegance.
+        <p className="hero-subhead">
+          Official platform of <strong>Dr. Carl Heckmann</strong> — Driving the convergence of the <strong>Energy Transition (Energiewende)</strong>, <strong>IT Ambidexterity & Lean Optimization</strong>, and <strong>Autonomous Multi-Agent Systems</strong>.
         </p>
 
+        <div className="hero-tags-row">
+          <span className="hero-tag">§ 41a EnWG Dynamic Tariffs</span>
+          <span className="hero-tag">Smart Metering (iMSys)</span>
+          <span className="hero-tag">IT Ambidexterity</span>
+          <span className="hero-tag">NextGen Energy Billing</span>
+          <span className="hero-tag">Multi-Agent Swarms</span>
+        </div>
+
         <div className="hero-actions">
-          <a href="#monitor" className="btn btn-primary" id="btn-explore-telemetry">
-            Live Telemetry
+          <a href="#pillars" className="btn btn-primary" id="btn-explore-pillars">
+            ⚡ Explore Core Pillars
           </a>
           <a
-            href="http://localhost:3000/api/docs"
+            href="#agent-simulator"
+            className="btn btn-primary-glow"
+            id="btn-hero-launch-simulator"
+          >
+            ▶ Launch Agent Simulator
+          </a>
+          <a
+            href="https://www.linkedin.com/in/carl-heckmann-21273631/"
             target="_blank"
             rel="noreferrer"
             className="btn btn-outline"
-            id="btn-swagger-docs"
+            id="btn-linkedin-profile"
           >
-            OpenAPI Docs ↗
+            LinkedIn Profile ↗
           </a>
-          <a href="#contact" className="btn btn-outline" id="btn-hero-contact">
-            Get In Touch
+          <a
+            href="https://github.com/oubou68"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-outline"
+            id="btn-github-profile"
+          >
+            GitHub ↗
           </a>
         </div>
       </div>

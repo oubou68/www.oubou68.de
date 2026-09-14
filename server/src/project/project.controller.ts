@@ -1,64 +1,82 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
-@ApiTags('Project')
+@ApiTags('Profile & Projects')
 @Controller('project')
 export class ProjectController {
   @Get()
-  @ApiOperation({ summary: 'Get application metadata, architectural specs, and stack info' })
-  @ApiResponse({ status: 200, description: 'Project information retrieved successfully' })
+  @ApiOperation({ summary: 'Get Dr. Carl Heckmann personal profile, expertise pillars, and project metadata' })
+  @ApiResponse({ status: 200, description: 'Profile and project information retrieved successfully' })
   getProjectInfo() {
     return {
-      name: 'www.oubou68.de',
+      name: 'Dr. Carl Heckmann',
+      title: 'Executive Leader in Energy IT, Process Optimization & AI Agents',
       domain: 'oubou68.de',
-      title: 'Oubou68 Digital Platform',
-      tagline: 'High-Performance Full-Stack Web Engineering',
-      author: 'oubou68',
-      version: '1.0.0',
-      description: 'Official digital platform and showcase for oubou68, powered by React 19 and NestJS 12.',
-      features: [
+      website: 'https://www.oubou68.de',
+      linkedin: 'https://www.linkedin.com/in/carl-heckmann-21273631/',
+      github: 'https://github.com/oubou68',
+      summary:
+        'Dr. Carl Heckmann drives digital transformation at the convergence of the energy transition (Energiewende), scalable business process automation, and autonomous multi-agent systems. Combining deep academic research (KIT / Uni Mannheim) with senior executive execution in software and BPO.',
+      pillars: [
         {
-          id: 'fullstack',
+          id: 'utilities',
           icon: '⚡',
-          title: 'Full-Stack Modern Architecture',
-          description: 'React single page client coupled with an enterprise-grade NestJS REST backend.',
+          title: 'Utilities & Energy Transformation',
+          tagline: 'Smart Grids, Dynamic Tariffs & NextGen Billing',
+          description:
+            'Architecting mission-critical platforms for the liberalized energy market: dynamic pricing pursuant to § 41a EnWG, 15-minute smart meter time-series ingestion (iMSys / TAF 1-14), EPEX Spot market integration, and BNetzA market communication (MaKo / AS4 / EDIFACT).',
+          highlights: [
+            'NextGen Energy Billing Engine (EBE-DE)',
+            'Dynamic Tariffs (§ 41a EnWG) & EPEX Spot Coupling',
+            'Smart Meter Gateway Ingestion (iMSys / TAF)',
+            'Regulatory Compliance (EnWG, MsbG, StromStG, GoBD)',
+          ],
         },
         {
-          id: 'telemetry',
-          icon: '📊',
-          title: 'Live Telemetry & Health Monitoring',
-          description: 'Real-time endpoint metrics inspecting uptime, memory consumption, and response latency.',
+          id: 'process-optimization',
+          icon: '⚙️',
+          title: 'Business Process Optimization',
+          tagline: 'IT Ambidexterity & Lean Operational Scaling',
+          description:
+            'Bridging operational efficiency with rapid digital innovation. Leveraging IT Ambidexterity principles to modernize legacy architectures, streamline Business Process Outsourcing (BPO), eliminate operational clearing bottlenecks, and enable straight-through processing (STP).',
+          highlights: [
+            'IT Ambidexterity (Exploitation vs. Exploration)',
+            'Business Process Outsourcing (BPO) Automation',
+            'Supplier Switching & Market Clearing Modernization',
+            'BEMD Standardization & Process Frameworks',
+          ],
         },
         {
-          id: 'design',
-          icon: '🎨',
-          title: 'Curated Vanilla Design System',
-          description: 'Bespoke dark mode UI, glowing gradients, glassmorphism, and smooth micro-interactions without bloat.',
-        },
-        {
-          id: 'api-docs',
-          icon: '📖',
-          title: 'OpenAPI & Swagger Integration',
-          description: 'Auto-generated interactive API documentation for seamless developer exploration.',
+          id: 'ai-agents',
+          icon: '🤖',
+          title: 'Autonomous AI Agents',
+          tagline: 'Multi-Agent Orchestration & Enterprise Intelligence',
+          description:
+            'Pioneering agentic architectures that automate high-complexity enterprise tasks. Deploying specialized multi-agent swarms for autonomous anomaly detection, automated reconciliation in high-volume utility billing, conversational energy agents, and human-in-the-loop decision support.',
+          highlights: [
+            'Multi-Agent Collaborative Workflows',
+            'Autonomous Exception & Billing Discrepancy Handling',
+            'Conversational AI Agents & Consumption Feedback',
+            'Deterministic Guardrails & Auditable Action Traces',
+          ],
         },
       ],
-      techStack: {
-        frontend: [
-          { name: 'React', version: '19' },
-          { name: 'TypeScript', version: '5.x' },
-          { name: 'Vite', version: '6.x' },
-          { name: 'Vanilla CSS', version: 'Modern CSS3' },
+      academicBackground: {
+        institutions: [
+          'Karlsruhe Institute of Technology (KIT)',
+          'University of Mannheim',
         ],
-        backend: [
-          { name: 'NestJS', version: '12.x' },
-          { name: 'Node.js', version: '24.x LTS' },
-          { name: 'Swagger UI', version: 'OpenAPI 3.0' },
-          { name: 'Vitest', version: '4.x' },
+        focus: [
+          'IT Ambidexterity in Enterprise Information Systems',
+          'Digital Feedback Systems & Smart Energy Consumption',
+          'Conversational Agents and Human-Computer Interaction',
         ],
-        infrastructure: [
-          { name: 'GitHub', role: 'Source & CI/CD' },
-          { name: 'REST Architecture', role: 'Standardized API' },
-        ],
+      },
+      technologyStack: {
+        languages: ['TypeScript', 'JavaScript', 'Python', 'SQL'],
+        frontend: ['React 19', 'Vite', 'Vanilla CSS3', 'HTML5 Canvas'],
+        backend: ['NestJS 12', 'Node.js', 'Express', 'Swagger / OpenAPI', 'Vitest'],
+        architecture: ['Event-Driven Microservices', 'Time-Series Data', 'Multi-Agent Swarms', 'REST & GraphQL'],
       },
     };
   }

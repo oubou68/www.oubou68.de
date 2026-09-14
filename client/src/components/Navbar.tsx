@@ -10,26 +10,26 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
     <header className="header" id="top-nav">
       <div className="container nav">
         <a href="#hero" className="brand" id="brand-link">
-          <div className="brand-badge">68</div>
+          <div className="brand-badge">CH</div>
           <div className="brand-domain">
-            oubou<span>68</span>.de
+            Dr. Carl <span>Heckmann</span>
           </div>
         </a>
 
         <ul className="nav-links">
           <li>
+            <a href="#pillars" className="nav-link" id="nav-link-pillars">
+              Pillars
+            </a>
+          </li>
+          <li>
+            <a href="#agent-simulator" className="nav-link" id="nav-link-simulator">
+              AI Simulator
+            </a>
+          </li>
+          <li>
             <a href="#monitor" className="nav-link" id="nav-link-monitor">
               Telemetry
-            </a>
-          </li>
-          <li>
-            <a href="#features" className="nav-link" id="nav-link-features">
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#stack" className="nav-link" id="nav-link-stack">
-              Tech Stack
             </a>
           </li>
           <li>
@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
             <span className="pulse-dot"></span>
             <span>
               {apiStatus === 'online'
-                ? `API Online ${apiLatency ? `(${apiLatency}ms)` : ''}`
+                ? `API Live ${apiLatency ? `(${apiLatency}ms)` : ''}`
                 : apiStatus === 'checking'
                 ? 'Connecting...'
                 : 'API Offline'}
@@ -56,13 +56,13 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
           </div>
 
           <a
-            href="https://github.com/oubou68/www.oubou68.de"
+            href="https://www.linkedin.com/in/carl-heckmann-21273631/"
             target="_blank"
             rel="noreferrer"
             className="btn btn-outline btn-sm"
-            id="github-repo-btn"
+            id="linkedin-nav-btn"
           >
-            GitHub ↗
+            LinkedIn ↗
           </a>
         </div>
       </div>
