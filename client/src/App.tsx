@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { ParticleMesh } from './components/ParticleMesh';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { AboutSection } from './components/AboutSection';
+import { ExperienceAffiliations } from './components/ExperienceAffiliations';
+import { PublicationsSection } from './components/PublicationsSection';
 import { PillarsSection } from './components/PillarsSection';
 import { AgentSimulator } from './components/AgentSimulator';
 import { TechStack } from './components/TechStack';
@@ -55,6 +58,9 @@ export function App() {
       <Navbar apiStatus={apiStatus} apiLatency={latency} />
       <main>
         <Hero />
+        <AboutSection />
+        <ExperienceAffiliations />
+        <PublicationsSection />
         <PillarsSection />
         <AgentSimulator />
         <TechStack />

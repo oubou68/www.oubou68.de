@@ -18,6 +18,21 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
 
         <ul className="nav-links">
           <li>
+            <a href="#about" className="nav-link" id="nav-link-about">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#experience" className="nav-link" id="nav-link-experience">
+              Experience & CV
+            </a>
+          </li>
+          <li>
+            <a href="#publications" className="nav-link" id="nav-link-publications">
+              Publications
+            </a>
+          </li>
+          <li>
             <a href="#pillars" className="nav-link" id="nav-link-pillars">
               Pillars
             </a>
@@ -25,11 +40,6 @@ export const Navbar: React.FC<NavbarProps> = ({ apiStatus, apiLatency }) => {
           <li>
             <a href="#agent-simulator" className="nav-link" id="nav-link-simulator">
               AI Simulator
-            </a>
-          </li>
-          <li>
-            <a href="#monitor" className="nav-link" id="nav-link-monitor">
-              Telemetry
             </a>
           </li>
           <li>
