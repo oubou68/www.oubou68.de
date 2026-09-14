@@ -34,11 +34,11 @@ export const Footer: React.FC = () => {
 
           <div className="footer-column">
             <h4>{t.footer.colPlatformTitle}</h4>
-            <a href="#monitor" className="footer-link">
-              {t.footer.linkTelemetry}
-            </a>
             <a href="http://localhost:3000/api/docs" target="_blank" rel="noreferrer" className="footer-link">
               {t.footer.linkSwagger}
+            </a>
+            <a href="http://localhost:3000/api/health" target="_blank" rel="noreferrer" className="footer-link">
+              API Health ↗
             </a>
           </div>
 

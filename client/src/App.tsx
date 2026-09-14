@@ -6,12 +6,10 @@ import { AboutSection } from './components/AboutSection';
 import { ExperienceAffiliations } from './components/ExperienceAffiliations';
 import { PublicationsSection } from './components/PublicationsSection';
 import { PillarsSection } from './components/PillarsSection';
-import { TelemetryMonitor, type HealthData } from './components/TelemetryMonitor';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 
 export function App() {
-  const [healthData, setHealthData] = useState<HealthData | null>(null);
   const [latency, setLatency] = useState<number | null>(null);
   const [apiStatus, setApiStatus] = useState<'online' | 'offline' | 'checking'>('checking');
 
@@ -27,8 +25,6 @@ export function App() {
       const end = performance.now();
 
       if (response.ok) {
-        const data: HealthData = await response.json();
-        setHealthData(data);
         setLatency(Math.round(end - start));
         setApiStatus('online');
       } else {
@@ -43,7 +39,7 @@ export function App() {
 
   useEffect(() => {
     checkHealth();
-    // Refresh telemetry every 30 seconds
+    // Refresh API status every 30 seconds
     const interval = setInterval(checkHealth, 30000);
     return () => clearInterval(interval);
   }, [checkHealth]);
@@ -60,13 +56,6 @@ export function App() {
         <ExperienceAffiliations />
         <PublicationsSection />
         <PillarsSection />
-        <TelemetryMonitor
-          healthData={healthData}
-          latency={latency}
-          apiStatus={apiStatus}
-          onRefresh={checkHealth}
-          apiUrl={apiUrl}
-        />
         <ContactSection apiUrl={apiUrl} />
       </main>
       <Footer />
