@@ -1,6 +1,8 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Footer: React.FC = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -8,49 +10,47 @@ export const Footer: React.FC = () => {
       <div className="container footer-content">
         <div className="footer-brand-summary">
           <div className="footer-title">
-            <strong>Dr. Carl Heckmann</strong>
+            <strong>{t.footer.title}</strong>
           </div>
-          <p className="footer-desc">
-            Executive Leadership in Energy IT, Process Optimization & Autonomous AI Agents.
-          </p>
+          <p className="footer-desc">{t.footer.desc}</p>
           <p className="footer-credits">
-            © {currentYear} Dr. Carl Heckmann (oubou68.de). Built with React 19 & NestJS 12.
+            {t.footer.credits.replace('{year}', currentYear.toString())}
           </p>
         </div>
 
         <div className="footer-links-group">
           <div className="footer-column">
-            <h4>Pillars</h4>
+            <h4>{t.footer.colPillarsTitle}</h4>
             <a href="#pillars" className="footer-link">
-              Utilities & Energy
+              {t.footer.linkUtilities}
             </a>
             <a href="#pillars" className="footer-link">
-              Process Optimization
+              {t.footer.linkProcess}
             </a>
             <a href="#pillars" className="footer-link">
-              Autonomous AI Agents
+              {t.footer.linkAi}
             </a>
           </div>
 
           <div className="footer-column">
-            <h4>Platform</h4>
+            <h4>{t.footer.colPlatformTitle}</h4>
             <a href="#monitor" className="footer-link">
-              Live Telemetry
+              {t.footer.linkTelemetry}
             </a>
             <a href="http://localhost:3000/api/docs" target="_blank" rel="noreferrer" className="footer-link">
-              OpenAPI Swagger
+              {t.footer.linkSwagger}
             </a>
           </div>
 
           <div className="footer-column">
-            <h4>Connect</h4>
+            <h4>{t.footer.colConnectTitle}</h4>
             <a
               href="https://www.linkedin.com/in/carl-heckmann-21273631/"
               target="_blank"
               rel="noreferrer"
               className="footer-link"
             >
-              LinkedIn Profile ↗
+              {t.footer.linkLinkedin}
             </a>
             <a
               href="https://github.com/oubou68"
@@ -58,10 +58,10 @@ export const Footer: React.FC = () => {
               rel="noreferrer"
               className="footer-link"
             >
-              GitHub (@oubou68) ↗
+              {t.footer.linkGithub}
             </a>
             <a href="#contact" className="footer-link">
-              Inquiry Form
+              {t.footer.linkContact}
             </a>
           </div>
         </div>

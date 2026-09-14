@@ -1,54 +1,17 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const TechStack: React.FC = () => {
-  const stackGroups = [
-    {
-      title: 'Frontend Ecosystem',
-      icon: '🎨',
-      items: [
-        'React 19',
-        'TypeScript 5.x',
-        'Vite 6',
-        'Vanilla CSS3',
-        'Google Fonts (Plus Jakarta Sans)',
-        'JetBrains Mono',
-      ],
-    },
-    {
-      title: 'Backend Ecosystem',
-      icon: '⚙️',
-      items: [
-        'NestJS 12',
-        'Node.js 24 LTS',
-        'Swagger / OpenAPI',
-        'Express Platform',
-        'Vitest Test Runner',
-        'Oxlint / Prettier',
-      ],
-    },
-    {
-      title: 'DevOps & Tooling',
-      icon: '🚀',
-      items: [
-        'Git Version Control',
-        'GitHub CLI (gh)',
-        'Concurrently Monorepo',
-        'RESTful Standards',
-        'Clean Architecture',
-        'oubou68 Production DNS',
-      ],
-    },
-  ];
+  const { t } = useLanguage();
+  const stackGroups = t.stack.groups;
 
   return (
     <section className="tech-section" id="stack">
       <div className="container">
         <div className="section-header">
-          <p className="section-tag">Engineering Stack</p>
-          <h2>Modern, Modular & Scalable</h2>
-          <p>
-            Curated selection of industry-standard tools and frameworks ensuring long-term maintainability.
-          </p>
+          <p className="section-tag">{t.stack.tag}</p>
+          <h2>{t.stack.heading}</h2>
+          <p>{t.stack.desc}</p>
         </div>
 
         <div className="tech-grid">

@@ -1,42 +1,43 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const Hero: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="hero" id="hero">
       <div className="container hero-container">
         <div className="hero-grid">
           <div className="hero-text-col">
             <div className="hero-personal-intro">
-              <span className="greeting-badge">Dr. rer. pol. Carl Heckmann</span>
-              <span className="greeting-subtitle">Executive • Researcher • Software & BPO Leader</span>
+              <span className="greeting-badge">{t.hero.badge}</span>
+              <span className="greeting-subtitle">{t.hero.subtitle}</span>
             </div>
 
             <h1 id="main-heading">
-              Engineering the Future of <br />
-              <span className="gradient-text">Utilities, Process Ambidexterity & AI</span>
+              {t.hero.titleLine1} <br />
+              <span className="gradient-text">{t.hero.titleGradient}</span>
             </h1>
 
-            <p className="hero-subhead">
-              I bridge academic research with industrial software and BPO execution. Serving as Prokurist and Head of Product & Implementation at <strong>hsag Heidelberger Services AG</strong>, Working Group Leader at <strong>BEMD e.V.</strong>, and Researcher/Lecturer at the <strong>Karlsruhe Institute of Technology (KIT)</strong>.
-            </p>
+            <p className="hero-subhead">{t.hero.subhead}</p>
 
             {/* Affiliation Badges */}
             <div className="hero-affiliations-row">
-              <span className="affil-tag">🏛️ hsag Heidelberger Services AG</span>
-              <span className="affil-tag">⚖️ BEMD e.V.</span>
-              <span className="affil-tag">🎓 KIT (Karlsruhe)</span>
-              <span className="affil-tag">📜 Univ. Mannheim (Dr. rer. pol.)</span>
+              <span className="affil-tag">{t.hero.affilHsag}</span>
+              <span className="affil-tag">{t.hero.affilBemd}</span>
+              <span className="affil-tag">{t.hero.affilKit}</span>
+              <span className="affil-tag">{t.hero.affilMannheim}</span>
             </div>
 
             <div className="hero-actions">
               <a href="#experience" className="btn btn-primary" id="btn-hero-cv">
-                📜 CV & Affiliations
+                {t.hero.btnCv}
               </a>
               <a href="#publications" className="btn btn-outline" id="btn-hero-publications">
-                📚 Publications (130+ Citations)
+                {t.hero.btnPublications}
               </a>
               <a href="#pillars" className="btn btn-primary-glow" id="btn-hero-pillars">
-                ⚡ Strategic Pillars
+                {t.hero.btnPillars}
               </a>
               <a
                 href="https://www.linkedin.com/in/carl-heckmann-21273631/"
@@ -45,7 +46,7 @@ export const Hero: React.FC = () => {
                 className="btn btn-outline"
                 id="btn-hero-linkedin"
               >
-                LinkedIn Profile ↗
+                {t.hero.btnLinkedin}
               </a>
             </div>
           </div>
@@ -61,12 +62,12 @@ export const Hero: React.FC = () => {
                 />
                 <div className="portrait-overlay-badge">
                   <span className="pulse-dot"></span>
-                  <span>Active Leadership & Advisory</span>
+                  <span>{t.hero.portraitBadge}</span>
                 </div>
               </div>
               <div className="portrait-caption">
-                <strong>Dr. Carl Heckmann</strong>
-                <span>Energy IT Executive & Research Fellow</span>
+                <strong>{t.hero.portraitName}</strong>
+                <span>{t.hero.portraitRole}</span>
               </div>
             </div>
           </div>

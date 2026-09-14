@@ -18,6 +18,7 @@ build/
 */build/
 out/
 .next/
+*.tsbuildinfo
 
 # Environment files
 .env

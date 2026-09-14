@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export interface HealthData {
   status: string;
@@ -29,6 +30,8 @@ export const TelemetryMonitor: React.FC<TelemetryMonitorProps> = ({
   onRefresh,
   apiUrl,
 }) => {
+  const { t } = useLanguage();
+
   const formatUptime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -44,8 +47,8 @@ export const TelemetryMonitor: React.FC<TelemetryMonitorProps> = ({
             <div className="monitor-title-group">
               <span className="monitor-icon">⚡</span>
               <div>
-                <h2>Live Backend Telemetry</h2>
-                <p>Real-time metrics dispatched from the NestJS REST API</p>
+                <h2>{t.telemetry.title}</h2>
+                <p>{t.telemetry.desc}</p>
               </div>
             </div>
 
@@ -56,7 +59,7 @@ export const TelemetryMonitor: React.FC<TelemetryMonitorProps> = ({
                 id="btn-refresh-telemetry"
                 title="Ping backend"
               >
-                ↻ Refresh Ping
+                {t.telemetry.btnRefresh}
               </button>
               <a
                 href={`${apiUrl}/health`}
@@ -65,14 +68,14 @@ export const TelemetryMonitor: React.FC<TelemetryMonitorProps> = ({
                 className="btn btn-outline btn-sm"
                 id="btn-view-raw-health"
               >
-                Raw JSON ↗
+                {t.telemetry.btnRawJson}
               </a>
             </div>
           </div>
 
           <div className="monitor-grid">
             <div className="metric-card" id="metric-status">
-              <span className="metric-label">Service Health</span>
+              <span className="metric-label">{t.telemetry.statusLabel}</span>
               <span
                 className="metric-value"
                 style={{
@@ -82,38 +85,42 @@ export const TelemetryMonitor: React.FC<TelemetryMonitorProps> = ({
                       : 'var(--accent-amber)',
                 }}
               >
-                {apiStatus === 'online' ? '● Healthy' : apiStatus === 'checking' ? 'Connecting...' : '○ Unreachable'}
+                {apiStatus === 'online'
+                  ? t.telemetry.statusHealthy
+                  : apiStatus === 'checking'
+                  ? t.telemetry.statusConnecting
+                  : t.telemetry.statusOffline}
               </span>
               <span className="metric-sub">
-                {healthData?.service ?? 'NestJS Core Engine'}
+                {healthData?.service ?? t.telemetry.serviceFallback}
               </span>
             </div>
 
             <div className="metric-card" id="metric-latency">
-              <span className="metric-label">API Latency</span>
+              <span className="metric-label">{t.telemetry.latencyLabel}</span>
               <span className="metric-value">
                 {latency !== null ? `${latency} ms` : '--'}
               </span>
-              <span className="metric-sub">Round-trip benchmark</span>
+              <span className="metric-sub">{t.telemetry.latencySub}</span>
             </div>
 
             <div className="metric-card" id="metric-uptime">
-              <span className="metric-label">Process Uptime</span>
+              <span className="metric-label">{t.telemetry.uptimeLabel}</span>
               <span className="metric-value">
                 {healthData ? formatUptime(healthData.uptimeSeconds) : '--'}
               </span>
-              <span className="metric-sub">Continuous execution</span>
+              <span className="metric-sub">{t.telemetry.uptimeSub}</span>
             </div>
 
             <div className="metric-card" id="metric-memory">
-              <span className="metric-label">Heap Memory</span>
+              <span className="metric-label">{t.telemetry.memoryLabel}</span>
               <span className="metric-value">
                 {healthData?.memory?.heapUsedMb ? `${healthData.memory.heapUsedMb} MB` : '--'}
               </span>
               <span className="metric-sub">
                 {healthData?.memory?.heapTotalMb
-                  ? `Total: ${healthData.memory.heapTotalMb} MB`
-                  : 'V8 Garbage Collected'}
+                  ? `${t.telemetry.memorySubTotal}: ${healthData.memory.heapTotalMb} MB`
+                  : t.telemetry.memorySubFallback}
               </span>
             </div>
           </div>
