@@ -9,7 +9,14 @@ export interface Publication {
   category: 'ambidexterity' | 'energy' | 'ai';
   categoryLabel: string;
   abstract: string;
-  doiOrUrl?: string;
+  primaryLink: {
+    label: string;
+    url: string;
+  };
+  secondaryLink?: {
+    label: string;
+    url: string;
+  };
 }
 
 export const PublicationsSection: React.FC = () => {
@@ -20,61 +27,107 @@ export const PublicationsSection: React.FC = () => {
       id: 'pub-balance',
       title: 'IT ambidexterity for business processes: the importance of balance',
       year: 2018,
-      authors: 'Carl Heckmann et al.',
-      venue: 'Business Process Management & Information Systems Research',
+      authors: 'Carl Simon Heckmann, Alexander Maedche',
+      venue: 'Business Process Management Journal, Vol. 24 No. 4, pp. 977-998',
       category: 'ambidexterity',
       categoryLabel: 'IT Ambidexterity',
       abstract:
-        'Demonstrates how organizations achieve superior operational performance by maintaining an architectural balance between IT capabilities that exploit existing process efficiencies and those that explore digital innovation.',
-      doiOrUrl: 'https://www.researchgate.net/',
+        'Introduces the Business Process IT (BPIT) Capability Framework and proves empirically that maintaining a conscious balance between exploitative and explorative IT investments drives market-leading performance.',
+      primaryLink: {
+        label: 'Emerald Insight (DOI: 10.1108/BPMJ-04-2016-0078) ↗',
+        url: 'https://doi.org/10.1108/BPMJ-04-2016-0078',
+      },
+      secondaryLink: {
+        label: 'ResearchGate Full-Text ↗',
+        url: 'https://www.researchgate.net/publication/325785025_IT_ambidexterity_for_business_processes_the_importance_of_balance',
+      },
     },
     {
       id: 'pub-performance',
       title: 'The Impact of Business Process IT Ambidexterity on Business Process Performance',
       year: 2015,
-      authors: 'Carl Heckmann et al.',
-      venue: 'International Conference on Information Systems (ICIS / ECIS)',
+      authors: 'Carl Heckmann',
+      venue: '23rd European Conference on Information Systems (ECIS 2015), Münster',
       category: 'ambidexterity',
       categoryLabel: 'IT Ambidexterity',
       abstract:
-        'A landmark empirical study providing quantitative metrics to assess how ambidextrous IT alignments eliminate procedural bottlenecks in mission-critical corporate operations.',
-      doiOrUrl: 'https://www.researchgate.net/',
+        'A comprehensive quantitative empirical study in the German utilities sector testing how combinations of explorative and exploitative IT capabilities impact process agility and cost performance.',
+      primaryLink: {
+        label: 'AIS eLibrary (Direct Access) ↗',
+        url: 'https://aisel.aisnet.org/ecis2015_cr/84/',
+      },
+      secondaryLink: {
+        label: 'ResearchGate ↗',
+        url: 'https://www.researchgate.net/publication/282772591_The_Impact_of_Business_Process_IT_Ambidexterity_on_Business_Process_Performance',
+      },
     },
     {
       id: 'pub-conversational',
       title: 'Designing Conversational Agents for Energy Feedback',
-      year: 2020,
-      authors: 'Carl Heckmann et al.',
-      venue: 'Human-Computer Interaction / Springer Studies',
+      year: 2018,
+      authors: 'Ulrich Gnewuch, Stefan Morana, Carl Heckmann, Alexander Maedche',
+      venue: 'Designing for a Digital and Globalized World (LNCS, Vol. 10844), Springer, pp. 18-33',
       category: 'ai',
       categoryLabel: 'Conversational AI',
       abstract:
-        'Examines the UX architecture, conversational heuristics, and user psychological receptivity of AI agents designed to deliver real-time consumption feedback to energy consumers.',
-      doiOrUrl: 'https://www.researchgate.net/',
+        'Derives design principles for conversational agents providing interactive household energy feedback, demonstrating high user receptivity and actionable consumption nudging compared to static dashboards.',
+      primaryLink: {
+        label: 'SpringerLink (DOI: 10.1007/978-3-319-91800-6_2) ↗',
+        url: 'https://doi.org/10.1007/978-3-319-91800-6_2',
+      },
+      secondaryLink: {
+        label: 'ResearchGate Full-Text ↗',
+        url: 'https://www.researchgate.net/publication/325437810_Designing_Conversational_Agents_for_Energy_Feedback',
+      },
     },
     {
       id: 'pub-smarticity',
       title: 'SMARTICITY – A Feedback System for Energy Consumption and Costs',
-      year: 2017,
-      authors: 'Carl Heckmann et al.',
-      venue: 'Energy Informatics & Smart Metering Research',
+      year: 2015,
+      authors: 'Carl Heckmann, Alexander Mädche',
+      venue: 'Energy, Science, Technology 2015, Karlsruhe, Germany',
       category: 'energy',
       categoryLabel: 'Energy & Smart Metering',
       abstract:
-        'Introduces the SMARTICITY architecture: integrating smart meter gateway lastgänge with granular tariff rating algorithms to present actionable cost feedback to consumers.',
-      doiOrUrl: 'https://www.researchgate.net/',
+        'Presents the SMARTICITY architecture: integrating smart meter gateway lastgänge with granular tariff rating algorithms to provide real-time cost visibility and demand-side energy optimization.',
+      primaryLink: {
+        label: 'ResearchGate (Direct Publication) ↗',
+        url: 'https://www.researchgate.net/publication/282772583_SMARTICITY_-_A_Feedback_System_for_Energy_Consumption_and_Costs',
+      },
+    },
+    {
+      id: 'pub-gamified-feedback',
+      title: 'The Energy Revolution towards Smart Meters and the Neglected User',
+      year: 2016,
+      authors: 'Diaa Abdelaziz, Carl Heckmann, Alexander Mädche',
+      venue: 'Multikonferenz Wirtschaftsinformatik (MKWI 2016), Ilmenau',
+      category: 'energy',
+      categoryLabel: 'Smart Metering UX',
+      abstract:
+        'Evaluates consumer engagement challenges during smart meter rollouts and presents a gamified feedback system prototype tailored to increase household energy awareness and tariff responsiveness.',
+      primaryLink: {
+        label: 'ResearchGate (Direct Publication) ↗',
+        url: 'https://www.researchgate.net/publication/301648079_The_energy_revolution_towards_smart_meters_and_the_neglected_user_a_gamified_energy_feedback_system_prototype',
+      },
     },
     {
       id: 'pub-human-ai-2026',
-      title: 'AI as a Colleague: Psychological & Organizational Dynamics of Human x AI Integration',
+      title: 'AI as a Colleague: Psychological and Organizational Dynamics of Human x AI Integration',
       year: 2026,
       authors: 'Carl Heckmann',
       venue: 'KIT Knowledge Week Human x AI (Karlsruhe Institute of Technology)',
       category: 'ai',
-      categoryLabel: 'Human x AI Agents',
+      categoryLabel: 'Human x AI Swarms',
       abstract:
-        'Explores the practical realities and organizational design requirements when autonomous multi-agent systems operate alongside human professionals in regulated enterprise domains.',
-      doiOrUrl: 'https://www.kit.edu',
+        'Analyzes the integration of autonomous agent swarms into knowledge-intensive enterprise workflows, examining trust boundaries, human-in-the-loop oversight, and organizational ambidexterity.',
+      primaryLink: {
+        label: 'Karlsruhe.digital Event Session ↗',
+        url: 'https://karlsruhe.digital/event/woche-des-wissens-mensch-x-ki/',
+      },
+      secondaryLink: {
+        label: 'KIT Human-Centered Systems Lab ↗',
+        url: 'https://h-cs.iism.kit.edu/',
+      },
     },
   ];
 
@@ -90,7 +143,7 @@ export const PublicationsSection: React.FC = () => {
           <p className="section-tag">Scientific & Academic Impact</p>
           <h2>Selected Publications & Research</h2>
           <p>
-            Peer-reviewed research and keynote contributions bridging information systems theory with pragmatic industrial utility applications. Over 130+ scientific citations.
+            Direct links to peer-reviewed journal papers, conference proceedings, and book chapters. Over 130+ scientific citations across IT Ambidexterity and Energy Informatics.
           </p>
 
           <div className="pub-filter-tabs">
@@ -99,7 +152,7 @@ export const PublicationsSection: React.FC = () => {
               onClick={() => setFilter('all')}
               id="pub-filter-all"
             >
-              All Research ({publications.length})
+              All Direct Links ({publications.length})
             </button>
             <button
               className={`filter-btn ${filter === 'ambidexterity' ? 'active' : ''}`}
@@ -133,21 +186,45 @@ export const PublicationsSection: React.FC = () => {
                 <span className="pub-year-badge">{pub.year}</span>
               </div>
 
-              <h3 className="pub-title">{pub.title}</h3>
+              <h3 className="pub-title">
+                <a
+                  href={pub.primaryLink.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pub-title-link"
+                  title={`Open direct publication: ${pub.title}`}
+                >
+                  {pub.title} ↗
+                </a>
+              </h3>
+              
               <div className="pub-authors">{pub.authors}</div>
               <div className="pub-venue">📍 {pub.venue}</div>
 
               <p className="pub-abstract">{pub.abstract}</p>
 
               <div className="pub-footer">
-                <a
-                  href="https://www.researchgate.net/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="pub-link"
-                >
-                  View on ResearchGate ↗
-                </a>
+                <div className="pub-direct-links">
+                  <a
+                    href={pub.primaryLink.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pub-direct-btn primary"
+                  >
+                    {pub.primaryLink.label}
+                  </a>
+
+                  {pub.secondaryLink && (
+                    <a
+                      href={pub.secondaryLink.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="pub-direct-btn secondary"
+                    >
+                      {pub.secondaryLink.label}
+                    </a>
+                  )}
+                </div>
               </div>
             </article>
           ))}
@@ -156,25 +233,25 @@ export const PublicationsSection: React.FC = () => {
         <div className="research-callout">
           <div className="callout-icon">📚</div>
           <div className="callout-text">
-            <strong>Academic Profile & Citations</strong>
+            <strong>Direct Research Profiles & Citations</strong>
             <p>
-              For a full catalog of academic preprints, conference proceedings, and doctoral supervision materials, visit my profile on{' '}
+              Inspect citation metrics, full texts, and co-author networks directly on my{' '}
               <a
-                href="https://www.researchgate.net/"
+                href="https://www.researchgate.net/profile/Carl-Heckmann"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: 'var(--accent-cyan)' }}
+                style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}
               >
-                ResearchGate
+                ResearchGate Profile (Dr. Carl Heckmann) ↗
               </a>{' '}
-              or the{' '}
+              or via the{' '}
               <a
                 href="https://www.kit.edu"
                 target="_blank"
                 rel="noreferrer"
-                style={{ color: 'var(--accent-cyan)' }}
+                style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}
               >
-                KIT Institute for Information Systems
+                KIT Institute of Information Systems and Marketing (IISM) ↗
               </a>.
             </p>
           </div>
